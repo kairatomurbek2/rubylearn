@@ -1,13 +1,18 @@
-contacts = [
-    {
-        name: "John Doe",
-        phone: "0555 55 55 55"
-    },
-    {
-        name: "Jack Daniels",
-        phone: "0772 22 22 22"
-    }
-]
+contacts = []
+
+file = File.open("contacts.txt")
+
+file.each_line do |line|
+  line_data = line.split (",")
+  contact = {
+      name: line_data[0],
+      phone: line_data[1]
+  }
+
+  contacts.push contact
+end
+
+file.close
 
 def enter_sign()
   print "> "
@@ -26,18 +31,17 @@ end
 
 loop do
   puts "What do you want to do?"
-  command = gets.chomp
+  command = enter_sign
 
   case command
     when "list"
       contacts.each do |contact|
         puts "Name: #{contact[:name]}"
         puts "Phone: #{contact[:phone]}"
-        puts "---------------------"
       end
     when "find"
       puts "Who do you want to find?"
-      search_name = gets.chomp
+      search_name = enter_sign
 
       contact = find_by_name(contacts, search_name)
 
@@ -75,5 +79,4 @@ loop do
       puts "No such command"
   end
 
-  puts "~~~~~~~~~~~~~~~~~~~~"
 end
