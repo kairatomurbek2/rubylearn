@@ -1,3 +1,5 @@
- Stas,0555 38 44 58
- Kairat,0700 13 96 80
- Daniel,0777 77-77-77
+adiletmaratov,0701 48-00-40
+ashedrin,0553 30-30-48
+azman, 0770 41-39-28
+vglebov, 0555 93-89-48
+kairat, 0700 13-96-80
