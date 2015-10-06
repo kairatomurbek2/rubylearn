@@ -1,11 +1,20 @@
-puts 'What is the name and path of the file?'
-filename = gets.chomp
-text = String.new
-File.open(filename) { |f| text = f.read }
-words = text.split(/[^a-zA-Z]/)
-freqs = Hash.new(0)
-words.each { |word| freqs[word] += 1 }
-freqs = freqs.sort_by {|x,y| y }
-freqs.reverse!
-freqs.each {|word, freq| puts word+' '+freq.to_s}
+file_to_read = ARGV[0]
 
+number_of_characters = 0
+number_of_lines = 0
+number_of_spaces = 0
+
+file_contents = File.read(file_to_read)
+number_of_characters = file_contents.length
+
+file_contents.each_line do |line|
+  number_of_lines += 1
+end
+
+file_contents.each_char do |character|
+  if character == " "
+    number_of_spaces += 1
+  end
+end
+
+puts "Your file has #{number_of_characters} characters, #{number_of_lines} lines and #{number_of_spaces} spaces."
