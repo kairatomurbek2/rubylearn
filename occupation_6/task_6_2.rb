@@ -1,13 +1,10 @@
-movies = {
-    "Interstellar" => {
-        "John" => 10,
-        "Jack" => 3
-    },
-    "Psycho" => {
-        "Jack" => 9,
-        "Jane" => 10
-    }
-}
+fruit_file = File.open("raiting.txt")
+movies = {}
+fruit_file.each_line do |line|
+  fruit, count = line.split
+  movies[fruit] = count
+end
+fruit_file.close
 
 def enter_sign()
   print "> "
